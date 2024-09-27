@@ -16,29 +16,29 @@ jobs:
       matrix:
         node-version: [20.x] # Use Node.js 20.x
 
-        steps:
-          # Step 1: Checkout the repository
-          - uses: actions/checkout@v4
+    steps:
+      # Step 1: Checkout the repository
+      - uses: actions/checkout@v4
 
-          # Step 2: Set up Node.js version and cache dependencies
-          - name: Set up Node.js
-            uses: actions/setup-node@v4
-            with:
-              node-version: '20.x'
-              cache: 'npm'
-              cache-dependency-path: client/package-lock.json
+      # Step 2: Set up Node.js version and cache dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: client/package-lock.json
 
-          # Step 3: Install dependencies for the client
-          - run: cd client && npm ci
+      # Step 3: Install dependencies for the client
+      - run: cd client && npm ci
 
-          # Step 4: Run ESLint to check code quality
-          - name: Run linter
-            run: cd client && npm run lint
+      # Step 4: Run ESLint to check code quality
+      - name: Run linter
+        run: cd client && npm run lint
 
-          # Step 5: Run Prettier to check code formatting
-          - name: Run Prettier
-            run: cd client && npm run prettier --check
+      # Step 5: Run Prettier to check code formatting
+      - name: Run Prettier
+        run: cd client && npm run prettier --check
 
-          # Step 6: Run tests for the client
-          - name: Run Client Tests
-            run: cd client && npm test
+      # Step 6: Run tests for the client
+      - name: Run Client Tests
+        run: cd client && npm test
