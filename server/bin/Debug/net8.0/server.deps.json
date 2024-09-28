@@ -9,7 +9,8 @@
       "server/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "8.0.8",
-          "Swashbuckle.AspNetCore": "6.4.0"
+          "Swashbuckle.AspNetCore": "6.4.0",
+          "System.ComponentModel.Annotations": "5.0.0"
         },
         "runtime": {
           "server.dll": {}
@@ -72,7 +73,8 @@
             "fileVersion": "6.4.0.0"
           }
         }
-      }
+      },
+      "System.ComponentModel.Annotations/5.0.0": {}
     }
   },
   "libraries": {
@@ -129,6 +131,13 @@
       "sha512": "sha512-1Hh3atb3pi8c+v7n4/3N80Jj8RvLOXgWxzix6w3OZhB7zBGRwsy7FWr4e3hwgPweSBpwfElqj4V4nkjYabH9nQ==",
       "path": "swashbuckle.aspnetcore.swaggerui/6.4.0",
       "hashPath": "swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+    },
+    "System.ComponentModel.Annotations/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
+      "path": "system.componentmodel.annotations/5.0.0",
+      "hashPath": "system.componentmodel.annotations.5.0.0.nupkg.sha512"
     }
   }
 }
