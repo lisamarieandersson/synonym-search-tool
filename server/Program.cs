@@ -1,14 +1,41 @@
-using SynonymSearchTool.Models; 
+// This file configures and starts the ASP.NET Core application.
+// It sets up the web server, registers services (such as SynonymService),
+// and configures the middleware pipeline for handling HTTP requests.
+// The Program.cs file also defines routing, enabling the application
+// to respond to specific endpoints and routes defined in the controllers.
+// This file ensures the application runs correctly and provides entry points for incoming requests.
+
+using SynonymSearchTool.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configure CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontendApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173")  // Frontend origin
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
+
+// Register the controllers 
+builder.Services.AddControllers();
+
+// Register the SynonymService (for dependency injection)
+builder.Services.AddSingleton<SynonymService>(); // If the service is stateless or for memory use
+
 // Create the app
 var app = builder.Build();
+
+// Use CORS
+app.UseCors("AllowFrontendApp");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -21,31 +48,7 @@ else
     app.UseHttpsRedirection(); // Only redirect to HTTPS when not in development 
 }
 
-// In-memory data structure for synonyms
-var synonymService = new SynonymService();
-
-
-// POST route to add a synonym
-app.MapPost("/synonyms", (SynonymRequest request) =>
-{
-    // Store the return value of AddSynonym in the result variable
-    var result = synonymService.AddSynonym(request.Word, request.Synonym);
-    
-    // Return the result message to the user
-    return Results.Ok(result);
-});
-
-
-
-// GET route to retrieve synonyms
-app.MapGet("/synonyms/{word}", (string word) =>
-{
-    var synonyms = synonymService.GetSynonyms(word);
-    if (synonyms.Count == 0)
-    {
-        return Results.NotFound("No synonyms found");
-    }
-    return Results.Ok(synonyms);
-});
+// Enable routing to controllers 
+app.MapControllers(); 
 
 app.Run();
