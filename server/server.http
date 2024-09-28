@@ -1,6 +1,55 @@
-@server_HostAddress = http://localhost:5045
+@server_HostAddress = http://localhost:5000
 
-GET {{server_HostAddress}}/weatherforecast/
-Accept: application/json
+### Add synonym "wash" for "clean"
 
-###
+POST http://localhost:5000/synonyms
+Content-Type: application/json
+
+{
+  "word": "clean",
+  "synonym": "rinse"
+}
+
+
+### Add synonym "tidy" for "wash"
+
+POST http://localhost:5000/synonyms
+Content-Type: application/json
+
+{
+  "word": "wash",
+  "synonym": "tidy"
+}
+
+### Add synonym "neat" for "tidy"
+POST http://localhost:5000/synonyms
+Content-Type: application/json
+
+{
+  "word": "neat",
+  "synonym": "tidy"
+}
+
+
+### Get synonyms for "clean"
+
+GET http://localhost:5000/synonyms/clean
+Content-Type: application/json
+
+
+### Get synonyms for "wash"
+
+GET http://localhost:5000/synonyms/wash
+Content-Type: application/json
+
+
+### Get synonyms for "tidy"
+
+GET http://localhost:5000/synonyms/tidy
+Content-Type: application/json
+
+### Get synonyms for "rinse"    
+
+GET http://localhost:5000/synonyms/rinse
+Content-Type: application/json
+

@@ -1,3 +1,5 @@
+using SynonymSearchTool.Models; 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -5,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Create the app
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -18,29 +21,31 @@ else
     app.UseHttpsRedirection(); // Only redirect to HTTPS when not in development 
 }
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+// In-memory data structure for synonyms
+var synonymService = new SynonymService();
 
-app.MapGet("/weatherforecast", () =>
+
+// POST route to add a synonym
+app.MapPost("/synonyms", (SynonymRequest request) =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+    // Store the return value of AddSynonym in the result variable
+    var result = synonymService.AddSynonym(request.Word, request.Synonym);
+    
+    // Return the result message to the user
+    return Results.Ok(result);
+});
+
+
+
+// GET route to retrieve synonyms
+app.MapGet("/synonyms/{word}", (string word) =>
+{
+    var synonyms = synonymService.GetSynonyms(word);
+    if (synonyms.Count == 0)
+    {
+        return Results.NotFound("No synonyms found");
+    }
+    return Results.Ok(synonyms);
+});
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
