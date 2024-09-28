@@ -2,18 +2,18 @@
 
 ### Add synonym "wash" for "clean"
 
-POST http://localhost:5000/synonyms
+POST http://localhost:5000/api/synonym
 Content-Type: application/json
 
 {
   "word": "clean",
-  "synonym": "rinse"
+  "synonym": "wash"
 }
 
 
 ### Add synonym "tidy" for "wash"
 
-POST http://localhost:5000/synonyms
+POST http://localhost:5000/api/synonym
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ### Add synonym "neat" for "tidy"
-POST http://localhost:5000/synonyms
+POST http://localhost:5000/api/synonym
 Content-Type: application/json
 
 {
@@ -30,26 +30,35 @@ Content-Type: application/json
   "synonym": "tidy"
 }
 
+### Add synonym "rinse" for "tidy"
+POST http://localhost:5000/api/synonym
+Content-Type: application/json
+
+{
+  "word": "tidy",
+  "synonym": "rinse"
+}
+
 
 ### Get synonyms for "clean"
 
-GET http://localhost:5000/synonyms/clean
+GET http://localhost:5000/api/synonym/clean
 Content-Type: application/json
 
 
 ### Get synonyms for "wash"
 
-GET http://localhost:5000/synonyms/wash
+GET http://localhost:5000/api/synonym/wash
 Content-Type: application/json
 
 
 ### Get synonyms for "tidy"
 
-GET http://localhost:5000/synonyms/tidy
+GET http://localhost:5000/api/synonym/tidy
 Content-Type: application/json
 
 ### Get synonyms for "rinse"    
 
-GET http://localhost:5000/synonyms/rinse
+GET http://localhost:5000/api/synonym/rinse
 Content-Type: application/json
 
