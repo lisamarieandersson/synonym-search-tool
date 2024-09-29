@@ -2,6 +2,7 @@
 // It provides methods to add new words and their synonyms, and to retrieve synonyms, including transitive relationships.
 // The data is stored in a dictionary, where each word is mapped to a set of its synonyms.
 // The service ensures that synonym relationships are bidirectional and avoids adding duplicate relationships.
+// If a word already exists, new synonyms can be added to it without duplicating the word itself.
 
 namespace SynonymSearchTool.Services
 {
