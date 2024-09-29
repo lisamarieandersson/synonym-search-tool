@@ -11,9 +11,10 @@ namespace SynonymSearchTool.Attributes
         protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
         {
             var input = value as string;
-            if (input == null || !Regex.IsMatch(input, "^[a-zA-Z]+$"))
+              // Updated regex: Allow words with at least one letter and optionally spaces, hyphens, and apostrophes.
+            if (input == null || !Regex.IsMatch(input, "^[a-zA-Z]+[a-zA-Z\\s'-]*$"))
             {
-                return new ValidationResult("The word must contain only alphabetic characters.");
+                return new ValidationResult("The word must contain at least one letter and can include spaces, hyphens, or apostrophes.");
             }
 
             return ValidationResult.Success!;
