@@ -9,4 +9,11 @@ export default defineConfig({
     environment: 'jsdom', // Ensures tests are run in a browser-like environment
     setupFiles: './tests/setup/setup.ts',
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler', // Use modern-compiler for better performance
+      },
+    },
+  },
 });
