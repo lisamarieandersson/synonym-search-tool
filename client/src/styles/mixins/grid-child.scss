@@ -1,0 +1,19 @@
+@mixin grid-child($start: 12, $span: 0) {
+  @if $span == 0 {
+    grid-column: span $start;
+  }
+
+  @if $span != 0 {
+    grid-column: $start / span $span;
+  }
+
+  // Responsive behavior for tablets (e.g., smaller screens)
+  @media (max-width: $breakpoint-tablet) {
+    grid-column: span 12; // Full width on tablet or smaller
+  }
+
+  // Breakpoint for larger tablets or small desktops
+  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+    grid-column: span 8;
+  }
+}

@@ -1,0 +1,40 @@
+/* Text */
+
+@mixin h1 {
+  font-family: 'Space Grotesk', serif;
+  font-weight: 400;
+  line-height: 1.2;
+  font-size: 3rem; /* 48px */
+
+  @media (max-width: $breakpoint-small-mobile) {
+    font-size: 1.75rem; /* 28px */
+  }
+
+  @media (max-width: $breakpoint-extra-small-mobile) {
+    font-size: 1.5rem; /* 24px */
+  }
+}
+
+@mixin input-placeholder-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  font-size: 1rem; /* 16px */
+  color: $color-dark-grey;
+}
+
+@mixin button-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 1rem; /* 16px */
+  color: $color-text;
+}
+
+@mixin highlight-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  font-size: 1.125rem; /* 18px */
+  color: $color-text;
+}
