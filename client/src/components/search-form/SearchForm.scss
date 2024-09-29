@@ -1,0 +1,95 @@
+@import '../../styles/main.scss';
+
+.search-form {
+  & {
+    @include inner-grid;
+  }
+
+  &__form {
+    width: 100%;
+    @include grid-child(1, 6);
+  }
+
+  .search-form__container {
+    position: relative;
+    width: 100%;
+    grid-row: 1;
+  }
+
+  &__input {
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.5rem;
+    padding-inline: $spacing-xxs;
+    border: none;
+    background-color: $color-light-grey;
+    border-radius: 50px;
+    @include input-placeholder-text;
+
+    // Hover effect
+    &:hover {
+      background-color: $color-grey;
+    }
+
+    // Focus effect (for keyboard navigation)
+    &:focus {
+      outline: 2px solid $color-midnight;
+      background-color: $color-white;
+    }
+  }
+
+  /* Combined button styles */
+  &__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+
+  &__search-button {
+    right: $spacing-xs;
+  }
+
+  &__clear-button {
+    right: $spacing-xl;
+  }
+
+  &__clear-icon {
+    padding-block-start: 0.15rem;
+    height: 1rem;
+    width: auto;
+  }
+
+  &__search-icon {
+    height: 1.5rem;
+    width: auto;
+  }
+
+  /* Vertical line between the buttons */
+  &__divider {
+    position: absolute;
+    right: $spacing-sm + 1.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.5rem;
+    width: 1px;
+    background-color: $color-midnight;
+  }
+
+  &__feedback {
+    grid-row: 2;
+    @include highlight-text;
+    @include grid-child(1, 6);
+  }
+
+  &__results {
+    margin-block-start: $spacing-md;
+    grid-row: 2;
+    list-style-position: inside;
+    @include grid-child(1, 6);
+  }
+}
