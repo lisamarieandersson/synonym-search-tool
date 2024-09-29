@@ -1,7 +1,7 @@
-// This service handles the in-memory storage and management of synonym relationships.
-// It provides methods to add new synonyms and retrieve existing synonyms, including transitive relationships.
-// The data is stored using a dictionary, where each word is mapped to a set of its synonyms.
-// The service ensures that the synonym relationships are bidirectional and prevents duplicates.
+// This service manages the in-memory storage and retrieval of synonym relationships.
+// It provides methods to add new words and their synonyms, and to retrieve synonyms, including transitive relationships.
+// The data is stored in a dictionary, where each word is mapped to a set of its synonyms.
+// The service ensures that synonym relationships are bidirectional and avoids adding duplicate relationships.
 
 namespace SynonymSearchTool.Services
 {
@@ -10,7 +10,7 @@ namespace SynonymSearchTool.Services
         // Dictionary for storing synonyms
         private Dictionary<string, HashSet<string>> synonymDictionary = new Dictionary<string, HashSet<string>>();
 
-        // Method to add a synonym and their relationship
+        // Method to add a word and its synonym to the dictionary, establishing a bidirectional relationship
         public string AddSynonym(string word, string synonym)
         {
             // Ensure the word exists in the dictionary
