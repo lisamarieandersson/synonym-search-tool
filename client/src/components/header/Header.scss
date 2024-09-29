@@ -1,0 +1,13 @@
+@import '../../styles/main.scss';
+
+.header {
+  & {
+    padding-block: $spacing-sm;
+    width: 100%;
+  }
+
+  &__heading {
+    padding-block-end: $spacing-xs;
+    @include h1;
+  }
+}
