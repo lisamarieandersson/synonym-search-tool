@@ -92,11 +92,15 @@ const SearchForm = () => {
             {message && <p className='search-form__feedback'>{message}</p>}
 
             {synonyms.length > 0 && (
-                <ul className='search-form__results'>
-                    {synonyms.map((synonym, index) => (
-                        <li key={index}>{synonym}</li>
-                    ))}
-                </ul>
+                <div className='search-form__results-group'>
+                    {/* Display the heading with the searched word */}
+                    <h2 className='search-form__heading'>Synonyms for "{queryWord}"</h2>
+                    <ul className='search-form__results-list'>
+                        {synonyms.map((synonym, index) => (
+                            <li className='search-form__results-list-item' key={index}>{synonym}{index < synonyms.length - 1 && ', '}</li>
+                        ))}
+                    </ul>
+                </div>
             )}
         </div>
     );
