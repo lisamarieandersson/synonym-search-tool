@@ -112,4 +112,9 @@
     word-spacing: 0.5rem;
     @include body-text;
   }
+
+  &__add-synonym {
+    grid-row: 4;
+    @include grid-child(1, 6);
+  }
 }
