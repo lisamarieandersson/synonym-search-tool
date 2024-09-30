@@ -1,0 +1,11 @@
+# Ignore build output and distribution folders
+build/
+dist/
+
+# Ignore node modules
+node_modules/
+
+# Ignore specific files or folders
+.DS_Store
+*.min.js
+*.min.css
