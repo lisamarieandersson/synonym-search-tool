@@ -37,7 +37,7 @@ namespace SynonymSearchTool.Controllers
             }
 
             var result = _synonymService.AddSynonym(request.Word, request.Synonym);
-            return Ok(result);
+            return Ok(new {message = result }); // Return a JSON object with the message
         }
 
         // GET endpoint to retrieve synonyms
