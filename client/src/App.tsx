@@ -1,6 +1,6 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.scss';
-import AddWordWithSynonymForm from './components/add-word-and-synonym-form/AddWordWithSynonymForm';
+import AddWordWithSynonymForm from './components/add-word-with-synonym-form/AddWordWithSynonymForm';
 import Header from './components/header/Header';
 import SearchForm from './components/search-form/SearchForm';
 import { useSynonymSearch } from './hooks/useSynonymSearch';
