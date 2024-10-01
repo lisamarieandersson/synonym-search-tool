@@ -21,7 +21,9 @@ export function useSynonymSearch(queryWord: string) {
                     );
                 })
                 .catch(() => {
-                    setMessage(`Error fetching results for "${queryWord}"`);
+                    setMessage(
+                        `No words found for "${queryWord}". Please try another one.`,
+                    );
                     setSynonyms([]); // Clear on error
                 });
         }
