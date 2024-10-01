@@ -1,11 +1,13 @@
 @import '../../styles/main.scss';
 
 .synonym-results-list {
-  grid-row: 3;
+  grid-row: 2;
   list-style-position: inside;
   border: 1px solid $color-midnight;
   border-radius: 1.25rem;
-  @include grid-child(1, 6);
+  & {
+    @include grid-child(1, 6);
+  }
 
   &__heading {
     padding-inline: $spacing-sm;
