@@ -14,6 +14,20 @@ namespace SynonymSearchTool.Services
         // Method to add a word and its synonym to the dictionary, establishing a bidirectional relationship
         public string AddSynonym(string word, string synonym)
         {
+
+            // Prevent adding the word as its own synonym
+            if (word.Equals(synonym, StringComparison.OrdinalIgnoreCase))
+            {
+                return "Word cannot be added as its own synonym.";
+            }
+
+
+            // Prevent adding the word as its own synonym
+            if (word.Equals(synonym, StringComparison.OrdinalIgnoreCase))
+            {
+                return "Word cannot be added as its own synonym.";
+            }
+
             // Ensure the word exists in the dictionary
             if (!synonymDictionary.ContainsKey(word))
             {
@@ -34,7 +48,7 @@ namespace SynonymSearchTool.Services
             synonymDictionary[word].Add(synonym);
             synonymDictionary[synonym].Add(word);
 
-            return "Synonym added";
+            return "Synonym successfully added!";
         }
 
         // Method to retrieve synonyms for a given word (with transitive lookup)
