@@ -1,5 +1,6 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSynonymSearch } from '../../hooks/useSynonymSearch';
+import SynonymResultsList from '../synonym-results-list/SynonymResultsList';
 import './SearchForm.scss';
 
 
@@ -11,6 +12,8 @@ function SearchForm() {
     const {
         word,
         message,
+        synonyms,
+        searchedWord,
         setWord,
         handleSubmit,
         clearInput,
@@ -58,9 +61,12 @@ function SearchForm() {
                         />
                     </button>
                 </div>
+                {/* Display message from the hook */}
+                {message && <p className="search-form__feedback">{message}</p>}
             </form>
-            {/* Display message from the hook */}
-            {message && <p className="search-form__feedback">{message}</p>}
+            {synonyms.length > 0 && (
+                <SynonymResultsList synonyms={synonyms} searchedWord={searchedWord} />
+            )}
         </div>
     );
 };
