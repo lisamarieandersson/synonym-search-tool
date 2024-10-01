@@ -17,15 +17,4 @@
     outline: 2px solid $color-midnight;
     background-color: $color-white;
   }
-
-  // Hover effect
-  &:hover {
-    background-color: $color-grey;
-  }
-
-  // Focus effect (for keyboard navigation)
-  &:focus {
-    outline: 2px solid $color-midnight;
-    background-color: $color-white;
-  }
 }
