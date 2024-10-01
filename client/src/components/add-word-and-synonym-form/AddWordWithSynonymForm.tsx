@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import './AddWordWithSynonymForm.scss';
 
-const AddWordWithSynonymForm = ({
-    handleAddWordWithSynonym,
-    message, // Add message as a prop
-}: {
-    handleAddWordWithSynonym: (word: string, synonym: string) => void,
-    message: string // Message prop type
-}) => {
+
+function AddWordWithSynonymForm({ handleAddWordWithSynonym, message }: { handleAddWordWithSynonym: (word: string, synonym: string) => void, message: string }) {
     const [newWord, setNewWord] = useState('');
     const [newSynonym, setNewSynonym] = useState('');
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        handleAddWordWithSynonym(newWord, newSynonym); // Pass both word and synonym
-        setNewWord(''); // Clear input after submit
-        setNewSynonym(''); // Clear input after submit
-    };
+        try {
+            handleAddWordWithSynonym(newWord, newSynonym);
+            console.log(Response); // Log the response for now
+            setNewWord(''); // Clear input after submit
+            setNewSynonym(''); // Clear input after submit
+        } catch (error) {
+            console.error(error); // Log the error for now
+        }
+    }
 
 
     return (
