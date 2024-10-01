@@ -12,12 +12,16 @@ describe('Header', () => {
 
 describe('Search form', () => {
     test('should allow user to type in the search input', async () => {
-        render(<App />);
         const user = userEvent.setup();
+        render(<App />);
 
-        const searchInput = screen.getByRole('textbox');
-        await user.type(searchInput, 'asd');
+        // Target the input field with the placeholder "Search for a word"
+        const searchInput = screen.getByPlaceholderText('Search for a word');
 
-        expect(searchInput).toHaveValue('asd');
+        // Simulate typing into the input field
+        await user.type(searchInput, 'example');
+
+        // Assert the value has been updated
+        expect(searchInput).toHaveValue('example');
     });
 });
