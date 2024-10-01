@@ -1,0 +1,29 @@
+@import '../../styles/main.scss';
+
+.synonym-results-list {
+  grid-row: 3;
+  list-style-position: inside;
+  border: 1px solid $color-midnight;
+  border-radius: 1.25rem;
+  @include grid-child(1, 6);
+
+  &__heading {
+    padding-inline: $spacing-sm;
+    padding-block: $spacing-sm $spacing-xs;
+    border-radius: 1.25rem 1.25rem 0 0;
+    background-color: $color-light-pink;
+    @include h2;
+  }
+
+  &__list {
+    padding-inline: $spacing-sm;
+    padding-block: $spacing-xs $spacing-sm;
+    list-style: none;
+  }
+
+  &__list-item {
+    display: inline;
+    word-spacing: 0.5rem;
+    @include body-text;
+  }
+}
