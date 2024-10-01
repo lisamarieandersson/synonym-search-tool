@@ -6,6 +6,7 @@
   }
 
   &__form {
+    grid-row: 1;
     width: 100%;
     @include grid-child(1, 6);
   }
@@ -13,7 +14,6 @@
   .search-form__container {
     position: relative;
     width: 100%;
-    grid-row: 1;
   }
 
   &__input {
@@ -63,22 +63,7 @@
   }
 
   &__feedback {
-    grid-row: 2;
+    padding-block-start: $spacing-xxs;
     @include feedback-text;
-    @include grid-child(1, 6);
-  }
-
-  &__add-new-word-button,
-  &__add-synonym-button {
-    @include button-styles;
-    @include grid-child(1, 3);
-  }
-
-  &__add-new-word-button {
-    grid-row: 3;
-  }
-
-  &__add-synonym-button {
-    grid-row: 4;
   }
 }
