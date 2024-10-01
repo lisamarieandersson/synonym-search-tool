@@ -1,3 +1,14 @@
+/**
+ * SynonymResultsList: Displays a list of synonyms for a word.
+ * 
+ * Props:
+ * - synonyms: Array of synonyms.
+ * - searchedWord: The word being searched.
+ * 
+ * Renders a heading with the searched word and a list of synonyms.
+ * Adds a comma after each synonym except the last.
+ */
+
 import './SynonymResultsList.scss';
 
 interface SynonymResultsListProps {

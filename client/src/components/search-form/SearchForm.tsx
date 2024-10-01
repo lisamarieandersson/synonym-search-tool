@@ -1,3 +1,15 @@
+/**
+ * SearchForm: A form for searching synonyms.
+ * 
+ * Uses useSynonymSearch hook for state and logic.
+ * 
+ * Renders a form with an input field.
+ * On submit, calls handleSubmit from useSynonymSearch.
+ * 
+ * Uses word state from useSynonymSearch for input value.
+ * Updates word state on input change.
+ */
+
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSynonymSearch } from '../../hooks/useSynonymSearch';
 import SynonymResultsList from '../synonym-results-list/SynonymResultsList';

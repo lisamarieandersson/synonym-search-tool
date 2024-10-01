@@ -1,5 +1,8 @@
 @import '../../styles/variables.scss';
 
+/* Dynamic content width setter */
+/* Ensures content maintains consistent margin on all screen size */
+
 @mixin content-width {
   & {
     width: 100%;
