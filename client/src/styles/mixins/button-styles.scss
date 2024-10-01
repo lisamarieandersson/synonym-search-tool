@@ -1,0 +1,17 @@
+@mixin button-styles {
+  width: 100%;
+  height: 3rem;
+  padding-inline: $spacing-xxs;
+  border-radius: 3.125rem;
+  cursor: pointer;
+  border: none;
+  background-color: $color-light-blue;
+  color: $color-midnight;
+  @include button-label;
+
+  // Hover effect
+  &:hover {
+    background-color: $color-midnight;
+    color: $color-white;
+  }
+}

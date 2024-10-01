@@ -11,9 +11,4 @@
   @media (max-width: $breakpoint-tablet) {
     grid-column: span 12; // Full width on tablet or smaller
   }
-
-  // Breakpoint for larger tablets or small desktops
-  @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
-    grid-column: span 8;
-  }
 }

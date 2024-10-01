@@ -40,16 +40,16 @@
 
 @mixin button-label {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.2;
   font-size: 1rem; /* 16px */
 }
 
-@mixin highlight-text {
+@mixin feedback-text {
   font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
-  font-size: 1.125rem; /* 18px */
+  font-size: 1rem; /* 16px */
 }
 
 @mixin body-text {

@@ -1,0 +1,31 @@
+@mixin input-styles {
+  width: 100%;
+  height: 3rem;
+  padding-inline: $spacing-xxs;
+  border: none;
+  background-color: $color-light-grey;
+  border-radius: 3.125rem;
+  @include input-placeholder-text;
+
+  // Hover effect
+  &:hover {
+    background-color: $color-grey;
+  }
+
+  // Focus effect (for keyboard navigation)
+  &:focus {
+    outline: 2px solid $color-midnight;
+    background-color: $color-white;
+  }
+
+  // Hover effect
+  &:hover {
+    background-color: $color-grey;
+  }
+
+  // Focus effect (for keyboard navigation)
+  &:focus {
+    outline: 2px solid $color-midnight;
+    background-color: $color-white;
+  }
+}
