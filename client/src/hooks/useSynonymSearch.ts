@@ -24,13 +24,12 @@ import { useEffect, useState } from 'react';
 import {
     getAddWordErrorMessage,
     getEmptyFieldsMessage,
-    getGenericAddWordErrorMessage,
     getNoWordsFoundMessage,
     getSelfSynonymMessage,
 } from '../constants/errorMessages';
 import {
-    getClearMessage,
     getSuccessMessage,
+    getSynonymExistsMessage,
 } from '../constants/feedbackMessages';
 import { addWordWithSynonym, fetchSynonyms } from '../services/synonymService';
 
@@ -89,24 +88,21 @@ export function useSynonymSearch(queryWord: string) {
 
         // Check if both newWord and newSynonym are provided
         if (!newWord || !newSynonym) {
-            // If not, set an error message and return early
             setMessage(getEmptyFieldsMessage());
             return;
         }
-        // Trim and lowercase the newWord and newSynonym
+
         const trimmedWord = newWord.trim().toLowerCase();
         const trimmedSynonym = newSynonym.trim().toLowerCase();
 
         // Check if both trimmedWord and trimmedSynonym are non-empty
         if (!trimmedWord || !trimmedSynonym) {
-            // If not, set an error message and return early
             setMessage(getEmptyFieldsMessage());
             return;
         }
 
         // Check if the trimmedWord is the same as the trimmedSynonym
         if (trimmedWord === trimmedSynonym) {
-            // If so, set an error message and return early
             setMessage(getSelfSynonymMessage());
             return;
         }
@@ -128,10 +124,19 @@ export function useSynonymSearch(queryWord: string) {
             // Log after successful API call
             console.log('API Response:', result);
 
-            // Set success message
+            // Check if the response indicates that the synonym already exists
+            if (
+                result.message ===
+                'Synonym already exists, please add another one'
+            ) {
+                setMessage(getSynonymExistsMessage());
+                return; // Return early, skipping the synonym update
+            }
+
+            // Set success message if successfully added
             setMessage(getSuccessMessage(newWord, newSynonym));
 
-            // Optionally, fetch updated synonyms
+            // Fetch updated synonyms only if the word was successfully added
             const updatedSynonyms = await fetchSynonyms(trimmedWord);
             setSynonyms(
                 updatedSynonyms.map((synonym: string) => synonym.toLowerCase()),
@@ -148,23 +153,18 @@ export function useSynonymSearch(queryWord: string) {
             setTimeout(() => {
                 setMessage('');
             }, 4000);
-        } catch (error) {
-            // Log any errors
-            console.error('Error adding the word and synonym:', error);
-            if (error instanceof Error) {
+        } catch (errorResponse) {
+            if (errorResponse instanceof Response) {
+                const error = await errorResponse.json();
                 setMessage(getAddWordErrorMessage(error.message));
-            } else {
-                setMessage(getGenericAddWordErrorMessage());
             }
         }
     };
 
-    // Function to clear the input fields
+    // Function to clear the input field without affecting the query or results
     const clearInput = () => {
-        // Clear the word state
-        setWord('');
-        // Set a message to indicate the input fields have been cleared
-        setMessage(getClearMessage());
+        setWord(''); // Clear the input field
+        setMessage(''); // Optionally clear any message
     };
 
     // Return the state and functions from the hook
