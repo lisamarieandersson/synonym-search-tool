@@ -36,7 +36,8 @@ namespace SynonymSearchTool.Controllers
                 return BadRequest(new { Errors = errors });
             }
 
-             // Convert both word and synonym to lowercase
+            // Convert the word to lowercase for consistent querying
+            // This is to ensure that the search is case-insensitive, as the synonym dictionary stores words in lowercase
             var wordLower = request.Word.ToLower();
             var synonymLower = request.Synonym.ToLower();
 
@@ -52,12 +53,17 @@ namespace SynonymSearchTool.Controllers
              // Convert the word to lowercase for consistent querying
             var wordLower = word.ToLower();
 
-             // Retrieve the synonyms using the lowercase word
+            // Retrieve the synonyms using the lowercase word
+            // The GetSynonyms method is part of the _synonymService, which handles the business logic for managing synonyms
             var synonyms = _synonymService.GetSynonyms(wordLower);
+            // If no synonyms were found, return a 404 Not Found status code with a custom message
+            // This provides a more informative error response than the default 404 message
             if (synonyms.Count == 0)
             {
                 return NotFound("No synonyms found, please try another word.");
             }
+            // If synonyms were found, return them with a 200 OK status code
+            // This indicates that the request was successful and the requested resources are included in the response
             return Ok(synonyms);
         }
     }

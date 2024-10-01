@@ -45,10 +45,12 @@ if (app.Environment.IsDevelopment())
 }
 else 
 {
-    app.UseHttpsRedirection(); // Only redirect to HTTPS when not in development 
+    app.UseHttpsRedirection(); // In production environments, we want to ensure all traffic is sent over HTTPS for security.
+    // This middleware will redirect HTTP requests to HTTPS.
 }
 
-// Enable routing to controllers 
+// Enable the routing middleware to map incoming requests to the appropriate controller actions.
 app.MapControllers(); 
 
+// This marks the point at which the application will start listening for HTTP requests.
 app.Run();

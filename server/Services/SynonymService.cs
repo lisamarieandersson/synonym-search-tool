@@ -38,28 +38,34 @@ namespace SynonymSearchTool.Services
                 synonymDictionary[synonym] = new HashSet<string>();
             }
 
-            // Check if the synonym relationship already exists
+            // Check if the synonym relationship already exists in both directions
+            // This is to prevent duplicate entries in the synonym dictionary
             if (synonymDictionary[word].Contains(synonym) && synonymDictionary[synonym].Contains(word))
             {
-                return "Synonym already exists"; // Return a feedback message to the user
+                return "Synonym already exists, please add another one"; // Return a feedback message to the user
             }
 
             // Add the synonym relationship in both directions
+            // This ensures that the relationship is reciprocal
             synonymDictionary[word].Add(synonym);
             synonymDictionary[synonym].Add(word);
 
-            return "Synonym successfully added!";
+            return "Synonym successfully added!"; // Return a feedback message to the user
         }
 
-        // Method to retrieve synonyms for a given word (with transitive lookup)
+        // Method to retrieve synonyms for a given word
+        // This method performs a transitive lookup, meaning it will find synonyms of synonyms, and so on
         public HashSet<string> GetSynonyms(string word)
-        {
+        {   // If the word is not in the dictionary, return an empty set
+            // This indicates that no synonyms were found
             if (!synonymDictionary.ContainsKey(word))
             {
                 return new HashSet<string>(); // No synonyms found
             }
 
-            // Use a set to track visited words
+             // Use a set to track visited words to avoid cycles
+            // Use a queue for breadth-first search
+            // Use a set to store the synonyms found
             var visited = new HashSet<string>();
             var queue = new Queue<string>();
             var synonyms = new HashSet<string>();
