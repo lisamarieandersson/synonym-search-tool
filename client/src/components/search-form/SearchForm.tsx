@@ -2,13 +2,15 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSynonymSearch } from '../../hooks/useSynonymSearch';
 import './SearchForm.scss';
 
-const SearchForm = () => {
+
+function SearchForm() {
     const [searchParams] = useSearchParams();
     const queryWord = searchParams.get('q') || '';
     const navigate = useNavigate();
 
     const {
         word,
+        message,
         setWord,
         handleSubmit,
         clearInput,
@@ -57,6 +59,8 @@ const SearchForm = () => {
                     </button>
                 </div>
             </form>
+            {/* Display message from the hook */}
+            {message && <p className="search-form__feedback">{message}</p>}
         </div>
     );
 };
