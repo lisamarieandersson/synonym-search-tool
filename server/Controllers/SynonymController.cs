@@ -36,6 +36,11 @@ namespace SynonymSearchTool.Controllers
                 return BadRequest(new { Errors = errors });
             }
 
+             // Convert both word and synonym to lowercase
+            var wordLower = request.Word.ToLower();
+            var synonymLower = request.Synonym.ToLower();
+
+            // Call service to add synonym
             var result = _synonymService.AddSynonym(request.Word, request.Synonym);
             return Ok(new {message = result }); // Return a JSON object with the message
         }
@@ -44,7 +49,11 @@ namespace SynonymSearchTool.Controllers
         [HttpGet("{word}")]
         public IActionResult GetSynonyms(string word)
         {
-            var synonyms = _synonymService.GetSynonyms(word);
+             // Convert the word to lowercase for consistent querying
+            var wordLower = word.ToLower();
+
+             // Retrieve the synonyms using the lowercase word
+            var synonyms = _synonymService.GetSynonyms(wordLower);
             if (synonyms.Count == 0)
             {
                 return NotFound("No synonyms found, please try another word.");
