@@ -69,9 +69,41 @@ dotnet run
 
 You can use REST Client (a VS Code extension) to test the API endpoints. Alternatively, tools like Postman can also be used to send HTTP requests.
 
+## Docker and Deployment to Render
+
+This project is containerized using Docker and deployed to Render.
+To run this project with Docker, make sure the following software is installed on your machine:
+
+[Docker](https://www.docker.com/) (required for building and running the Docker container)
+
+### Docker
+
+The project is containerized using Docker. Below are the steps to build and run the application:
+
+1. Build the Docker Image:
+
+```
+docker build -t synonymsearchtool .
+```
+
+2. Run the Container for Local Development (port 5000):
+
+```
+docker run -d -p 5000:5000 synonymsearchtool
+```
+
+After running the container, the application will be available at [localhost:5000](http://localhost:5000)
+
+### Deployment to Render
+
+- The project is automatically deployed to Render using Docker.
+- Render builds the Docker image and deploys it to the provided URL, exposing port 8080 for the API.
+- You can access the deployed API through the Render-provided URL, for example:
+- https://synonym-search-tool.onrender.com/api/synonym/clean
+
 ## Continuous Integration
 
-This project uses GitHub Actions for automated workflows. The following tasks are currently automated:
+This project uses GitHub Actions for automated workflows on the frontend. The following tasks are currently automated:
 
 - Frontend tests: Runs the Vitest tests whenever changes are pushed to the repository.
 - Linting and formatting: Ensures code adheres to the project's linting rules and uses Prettier for consistent formatting.
