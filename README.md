@@ -28,7 +28,10 @@ To run this project locally, you will need:
 ### Frontend (Client)
 
 1. Navigate to the client folder:
-   cd client
+
+```
+cd client
+```
 
 2. Install dependencies
 
