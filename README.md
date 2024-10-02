@@ -82,7 +82,7 @@ You can find the configuration for these workflows in the .github/workflows/ dir
 
 ## Demo
 
-You can try the frontend demo here: [Synonym Search Tool](https://synonymsearchtool.netlify.app/)
+You can try out the frontend demo here: [Synonym Search Tool](https://synonymsearchtool.netlify.app/)
 
 ## Notes
 
