@@ -13,14 +13,13 @@ var  _myOrigin = "_myOrigin";
 string hostname = Environment.GetEnvironmentVariable("CLIENT_URL") ?? "http://localhost:5173";
 
 
-//
 // Check the environment and configure the port accordingly
 if (builder.Environment.IsDevelopment())
 {
     // For local development, use port 8080
     builder.WebHost.ConfigureKestrel(options =>
     {
-        options.ListenAnyIP(8080);
+        options.ListenAnyIP(5000);
     });
 }
 else
