@@ -3,7 +3,7 @@
 const url =
     import.meta.env.MODE === 'production'
         ? 'https://synonym-search-tool.onrender.com'
-        : 'http://localhost:8080';
+        : 'http://localhost:5000'; // For development
 
 // Function to fetch synonyms for a given search term
 export const fetchSynonyms = async (searchTerm: string) => {
