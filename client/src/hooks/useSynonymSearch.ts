@@ -54,10 +54,6 @@ export function useSynonymSearch(queryWord: string) {
                     setMessage('');
                     // Update the searchedWord state to reflect the word that was actually searched
                     setSearchedWord(queryWord);
-                    console.log(
-                        `Search for "${queryWord}" was successful. Synonyms:`,
-                        data,
-                    );
                 })
                 .catch(() => {
                     // If the fetch fails, set an error message and clear the synonyms
@@ -83,9 +79,6 @@ export function useSynonymSearch(queryWord: string) {
         newWord: string,
         newSynonym: string,
     ) => {
-        // Log inputs before processing
-        console.log('New Word:', newWord, 'New Synonym:', newSynonym);
-
         // Check if both newWord and newSynonym are provided
         if (!newWord || !newSynonym) {
             setMessage(getEmptyFieldsMessage());
@@ -108,21 +101,11 @@ export function useSynonymSearch(queryWord: string) {
         }
 
         try {
-            // Log before API call
-            console.log(
-                'Adding word and synonym to backend:',
-                trimmedWord,
-                trimmedSynonym,
-            );
-
             // Call the API to add the word and synonym
             const result = await addWordWithSynonym(
                 trimmedWord,
                 trimmedSynonym,
             );
-
-            // Log after successful API call
-            console.log('API Response:', result);
 
             // Check if the response indicates that the synonym already exists
             if (
@@ -141,9 +124,6 @@ export function useSynonymSearch(queryWord: string) {
             setSynonyms(
                 updatedSynonyms.map((synonym: string) => synonym.toLowerCase()),
             );
-
-            // Log updated synonyms
-            console.log('Updated Synonyms:', updatedSynonyms);
 
             // Clear input fields
             setNewWord('');

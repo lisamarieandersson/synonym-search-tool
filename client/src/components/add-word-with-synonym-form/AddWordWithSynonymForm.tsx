@@ -28,7 +28,6 @@ function AddWordWithSynonymForm({ handleAddWordWithSynonym, message }: AddWordWi
         e.preventDefault();
         try {
             handleAddWordWithSynonym(newWord, newSynonym);
-            console.log(Response); // Log the response for now
             setNewWord(''); // Clear input after submit
             setNewSynonym(''); // Clear input after submit
         } catch (error) {
