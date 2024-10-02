@@ -14,8 +14,13 @@
 import { useState } from 'react';
 import './AddWordWithSynonymForm.scss';
 
+interface AddWordWithSynonymFormProps {
+    handleAddWordWithSynonym: (word: string, synonym: string) => void;
+    message: string;
+}
 
-function AddWordWithSynonymForm({ handleAddWordWithSynonym, message }: { handleAddWordWithSynonym: (word: string, synonym: string) => void, message: string }) {
+
+function AddWordWithSynonymForm({ handleAddWordWithSynonym, message }: AddWordWithSynonymFormProps) {
     const [newWord, setNewWord] = useState('');
     const [newSynonym, setNewSynonym] = useState('');
 
