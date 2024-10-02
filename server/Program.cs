@@ -8,6 +8,29 @@
 using SynonymSearchTool.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+var  _myOrigin = "_myOrigin";
+
+string hostname = Environment.GetEnvironmentVariable("CLIENT_URL") ?? "http://localhost:5173";
+
+
+//
+// Check the environment and configure the port accordingly
+if (builder.Environment.IsDevelopment())
+{
+    // For local development, use port 8080
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.ListenAnyIP(8080);
+    });
+}
+else
+{
+    // For production (Render), use port 8080
+    builder.WebHost.ConfigureKestrel(options =>
+    {
+        options.ListenAnyIP(8080);
+    });
+}
 
 // Add services to the container.
 builder.Services.AddEndpointsApiExplorer();
@@ -16,10 +39,10 @@ builder.Services.AddSwaggerGen();
 // Configure CORS policy
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontendApp",
+    options.AddPolicy(name: _myOrigin,
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173")  // Frontend origin
+            policy.WithOrigins(hostname) // Frontend origin
                   .AllowAnyHeader()
                   .AllowAnyMethod();
         });
@@ -35,7 +58,7 @@ builder.Services.AddSingleton<SynonymService>(); // If the service is stateless 
 var app = builder.Build();
 
 // Use CORS
-app.UseCors("AllowFrontendApp");
+app.UseCors(_myOrigin);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -45,10 +68,12 @@ if (app.Environment.IsDevelopment())
 }
 else 
 {
-    app.UseHttpsRedirection(); // In production environments, we want to ensure all traffic is sent over HTTPS for security.
+     app.UseHttpsRedirection(); // In production environments, we want to ensure all traffic is sent over HTTPS for security.
     // This middleware will redirect HTTP requests to HTTPS.
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
-
+ 
 // Enable the routing middleware to map incoming requests to the appropriate controller actions.
 app.MapControllers(); 
 
