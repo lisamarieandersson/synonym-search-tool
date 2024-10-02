@@ -33,7 +33,7 @@ To run this project locally, you will need:
 cd client
 ```
 
-2. Install dependencies
+2. Install the dependencies:
 
 ```
 npm install
