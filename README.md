@@ -86,5 +86,5 @@ You can try the frontend demo here: [Synonym Search Tool](https://synonymsearcht
 
 ## Notes
 
-- This project is set up with Vitest for frontend testing, although the test coverage is currently limited.
+- This project is set up with Vitest for frontend testing. While test coverage is currently limited, more tests will be added in the future.
 - The repository is structured as a monorepo, so be sure to navigate to the correct directories (client and server) before running commands.
