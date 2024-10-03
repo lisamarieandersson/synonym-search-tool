@@ -129,10 +129,10 @@ export function useSynonymSearch(queryWord: string) {
             setNewWord('');
             setNewSynonym('');
 
-            // Clear the message after 4 seconds
+            // Clear the message after 5 seconds
             setTimeout(() => {
                 setMessage('');
-            }, 4000);
+            }, 5000);
         } catch (errorResponse) {
             if (errorResponse instanceof Response) {
                 const error = await errorResponse.json();
