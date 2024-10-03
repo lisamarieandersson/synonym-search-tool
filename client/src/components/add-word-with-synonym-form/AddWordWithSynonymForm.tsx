@@ -37,27 +37,27 @@ function AddWordWithSynonymForm({ handleAddWordWithSynonym, message }: AddWordWi
 
 
     return (
-        <div className="add-word-with-synonym">
-            <div className="add-word-with-synonym__container">
-                <h2 className="add-word-with-synonym__heading">Add a new word with synonym</h2>
-                <form onSubmit={handleSubmit} className="add-word-with-synonym__form">
+        <div className="add-word-with-synonym-form">
+            <div className="add-word-with-synonym-form__container">
+                <h3 className="add-word-with-synonym-form__heading">Add a new word with synonym</h3>
+                <form onSubmit={handleSubmit} className="add-word-with-synonym-form__form">
                     <input
                         type="text"
                         placeholder="Enter a new word"
                         value={newWord}
                         onChange={(e) => setNewWord(e.target.value)}
-                        className="add-word-with-synonym__input"
+                        className="add-word-with-synonym-form__input"
                     />
                     <input
                         type="text"
                         placeholder="Enter a synonym"
                         value={newSynonym}
                         onChange={(e) => setNewSynonym(e.target.value)}
-                        className="add-word-with-synonym__input"
+                        className="add-word-with-synonym-form__input"
                     />
-                    <button type="submit" className="add-word-with-synonym__button">Submit</button>
+                    <button type="submit" className="add-word-with-synonym-form__button">Submit</button>
                 </form>
-                {message && <p className="add-word-with-synonym__feedback">{message}</p>} {/* Feedback for this form */}
+                {message && <p className="add-word-with-synonym-form__feedback">{message}</p>} {/* Feedback for this form */}
             </div>
         </div>
     );

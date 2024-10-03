@@ -9,11 +9,19 @@
     @include grid-child(1, 6);
   }
 
-  &__heading {
+  &__heading-wrapper {
     padding-inline: $spacing-sm;
     padding-block: $spacing-sm $spacing-xs;
     border-radius: 1.25rem 1.25rem 0 0;
     background-color: $color-light-pink;
+  }
+
+  &__heading-label {
+    padding-block-end: $spacing-xxs;
+    @include lead-text;
+  }
+
+  &__heading-word {
     @include h2;
   }
 

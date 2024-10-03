@@ -1,6 +1,6 @@
 @import '../../styles/main.scss';
 
-.add-word-with-synonym {
+.add-word-with-synonym-form {
   & {
     @include inner-grid;
   }
@@ -12,10 +12,11 @@
 
   &__heading {
     padding-block-end: $spacing-xxs;
+    @include h3;
   }
 
   &__input {
-    @include input-styles;
+    @include word-input;
     margin-block-end: $spacing-xxs;
   }
 
