@@ -8,7 +8,12 @@
   }
 
   // Responsive behavior for tablets (e.g., smaller screens)
-  @media (max-width: $breakpoint-tablet) {
+  @media (max-width: $breakpoint-large-tablet) {
+    grid-column: span 7;
+  }
+
+  // Responsive behavior for mobiles
+  @media (max-width: $breakpoint-mobile) {
     grid-column: span 12; // Full width on tablet or smaller
   }
 }

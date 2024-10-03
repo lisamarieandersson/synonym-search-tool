@@ -1,4 +1,4 @@
-@mixin input-styles {
+@mixin search-input {
   width: 100%;
   height: 3rem;
   padding-inline: $spacing-xxs;
@@ -6,12 +6,30 @@
   background-color: $color-light-grey;
   border-radius: 3.125rem;
   @include input-placeholder-text;
+  @include hover-effect-on-input;
+  @include focus-effect-on-input;
+}
 
+@mixin word-input {
+  width: 100%;
+  height: 3rem;
+  padding-inline: $spacing-xxs;
+  border: 1px solid $color-midnight;
+  background-color: $color-white;
+  border-radius: 3.125rem;
+  @include input-placeholder-text;
+  @include hover-effect-on-input;
+  @include focus-effect-on-input;
+}
+
+@mixin hover-effect-on-input {
   // Hover effect
   &:hover {
     background-color: $color-grey;
   }
+}
 
+@mixin focus-effect-on-input {
   // Focus effect (for keyboard navigation)
   &:focus {
     outline: 2px solid $color-midnight;
