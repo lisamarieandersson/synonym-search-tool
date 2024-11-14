@@ -116,6 +116,8 @@ You can find the configuration for these workflows in the .github/workflows/ dir
 
 You can try out the frontend demo here: [Synonym Search Tool](https://synonymsearchtool.netlify.app/)
 
+**Note**: Please allow a few seconds for the server to start when first loading the application.
+
 ## Notes
 
 - This project is set up with Vitest for frontend testing. While test coverage is currently limited, more tests will be added in the future.
